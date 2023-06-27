@@ -21,7 +21,8 @@ const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
 app.use(express.static('public'));
 // app.use(express.static('/tmp'));
-app.use(fileUpload({useTempFiles:false}))
+app.use(fileUpload({useTempFiles:true,
+  tempFileDir : '/tmp/'}))
 
 app.use(express.json())
 
