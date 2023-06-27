@@ -35,7 +35,7 @@ const uploadProductImage = async(req,res)=>{
         folder:'file-upload',
     });
     console.log(result);
-    fs.unlinkSync(req.files.image)
+    // fs.unlinkSync(req.files.image)
     return res.status(StatusCodes.OK).json({image:{src:result.secure_url}})
 }
 
