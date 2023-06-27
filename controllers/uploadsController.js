@@ -31,12 +31,12 @@ const uploadProductImageLocal = async(req,res)=>{
 
 const uploadProductImage = async(req,res)=>{
     console.log(req.files.image)
-    const result = await cloudinary.uploader.upload(req.files.image,{
+    const result = await cloudinary.uploader.upload(req.files.image.tempFilePath,{
         use_filename:true,
         folder:'file-upload',
     });
     console.log(result);
-    // fs.unlinkSync(req.files.image)
+    fs.unlinkSync(req.files.image.tempFilePath)
     return res.status(StatusCodes.OK).json({image:{src:result.secure_url}})
 }
 
